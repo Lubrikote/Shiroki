@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Industrial Lubricants – Shiroki Material Manufacturing Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark:    #2c4a35;
+      --green-mid:     #3d6147;
+      --green-light:   #c6d9ba;
+      --green-pale:    #ddebd3;
+      --green-section: #c8d9be;
+      --green-nav:     #cfdfc6;
+      --green-footer:  #b8cead;
+      --cream:         #f5f5ef;
+      --off-white:     #eef2e7;
+      --text-dark:     #1e2d22;
+      --text-mid:      #3a4f3e;
+      --text-muted:    #5e7260;
+      --white:         #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--green-nav);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 120px;
+      box-shadow: 0 1px 8px rgba(44,74,53,.12);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { width: 42px; height: 42px; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-logo-text span:first-child { font-weight: 700; font-size: 17px; color: var(--green-dark); letter-spacing: .06em; }
+    .nav-logo-text span:last-child  { font-size: 8px; color: var(--text-muted); letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 16px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 12px; font-weight: 500;
+      color: var(--text-mid); letter-spacing: .07em; text-transform: uppercase;
+      padding: 8px 20px; border-radius: 4px; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links a.active { color: var(--green-dark); font-weight: 700; }
+
+    /* ─── SOLUTIONS DROPDOWN ─────────────────────── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { cursor: default; }
+    .dropdown-menu {
+      display: none;
+      position: absolute; top: calc(100% + 6px); left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 1px solid var(--green-light);
+      border-radius: 12px;
+      padding: 22px 26px;
+      gap: 28px;
+      min-width: 520px;
+      box-shadow: 0 8px 32px rgba(44,74,53,.15);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .dropdown-menu { display: flex; }
+    .dropdown-col { display: flex; flex-direction: column; }
+    .dropdown-col-title {
+      font-size: 10px; font-weight: 700; letter-spacing: .10em;
+      text-transform: uppercase; color: var(--green-dark);
+      margin-bottom: 10px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--green-light);
+      white-space: nowrap;
+    }
+    .dropdown-col a {
+      font-size: 13px; color: var(--text-muted); text-decoration: none;
+      padding: 4px 0; transition: color .2s;
+      text-transform: none; font-weight: 400; letter-spacing: 0;
+    }
+    .dropdown-col a:hover { color: var(--green-dark); }
+    .dropdown-col a.active { color: var(--green-dark); font-weight: 600; }
+
+    /* ─── LOGO BAND ───────────────────────────────── */
+    .logo-band {
+      background: var(--green-nav);
+      padding: 18px 48px;
+      display: flex; align-items: center;
+    }
+    .logo-band-inner { display: flex; align-items: center; gap: 10px; }
+    .logo-band-inner svg { width: 56px; height: 56px; }
+    .logo-band-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-band-text span:first-child { font-weight: 800; font-size: 20px; color: var(--green-dark); letter-spacing: .07em; }
+    .logo-band-text span:last-child  { font-size: 8px; color: var(--text-muted); letter-spacing: .12em; text-transform: uppercase; }
+
+    /* ─── MEGA MENU ───────────────────────────────── */
+    .mega-menu {
+      background: var(--white);
+      border-top: 1px solid var(--green-light);
+      border-bottom: 1px solid var(--green-light);
+      padding: 22px 80px;
+      display: flex; gap: 80px; justify-content: center;
+    }
+    .mega-col h4 { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; letter-spacing: .02em; }
+    .mega-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .mega-col ul a { text-decoration: none; font-size: 13px; color: var(--text-muted); transition: color .2s; }
+    .mega-col ul a:hover { color: var(--green-dark); }
+    .mega-col ul a.active { color: var(--green-dark); font-weight: 600; }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 440px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+      background: #faf8f3;
+      padding: 60px 40px 80px;
+    }
+
+    /* Oil droplets — warm amber circles like in screenshot */
+    .droplets {
+      position: absolute;
+      inset: 0; pointer-events: none; z-index: 0;
+    }
+
+    /* hex cluster left */
+    .hex-cluster-left {
+      position: absolute; bottom: 30px; left: 30px;
+      width: 200px; height: 200px;
+      pointer-events: none; z-index: 1; opacity: .42;
+    }
+    .hex-cluster-right {
+      position: absolute; top: 50%; right: 30px;
+      transform: translateY(-50%);
+      width: 180px; height: 180px;
+      pointer-events: none; z-index: 1; opacity: .32;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: clamp(46px, 6.5vw, 80px);
+      color: var(--green-dark); line-height: 1;
+      animation: fadeDown .65s ease-out both;
+    }
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .btn-catalog {
+      display: inline-block; margin-top: 8px;
+      padding: 13px 44px;
+      border: 2px solid var(--green-dark); border-radius: 999px;
+      background: transparent; color: var(--green-dark);
+      font-size: 12px; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; text-decoration: none; cursor: pointer;
+      transition: background .22s, color .22s, transform .18s;
+      animation: fadeDown .65s ease-out both; animation-delay: .15s;
+    }
+    .btn-catalog:hover { background: var(--green-dark); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── INTRO + ACCORDION ───────────────────────── */
+    .intro-section {
+      background: var(--white);
+      padding: 70px 80px 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 70px; max-width: 1300px; margin: 0 auto;
+    }
+    .intro-text p { font-size: 15px; line-height: 1.85; color: var(--text-mid); margin-bottom: 14px; }
+    .intro-text p:last-child { margin-bottom: 0; }
+
+    .accordion-wrap { background: var(--green-section); border-radius: 22px; overflow: hidden; align-self: start; }
+    .acc-item { border-bottom: 1px solid rgba(44,74,53,.12); }
+    .acc-item:last-child { border-bottom: none; }
+    .acc-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; cursor: pointer;
+      font-size: 14.5px; font-weight: 500;
+      color: var(--text-dark); transition: background .2s; user-select: none;
+    }
+    .acc-header:hover { background: rgba(44,74,53,.07); }
+    .acc-header.open  { font-weight: 600; color: var(--green-dark); }
+    .acc-chevron { width: 18px; height: 18px; transition: transform .3s; flex-shrink: 0; color: var(--green-dark); }
+    .acc-header.open .acc-chevron { transform: rotate(180deg); }
+    .acc-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .3s ease;
+      padding: 0 26px; font-size: 13.5px; line-height: 1.75; color: var(--text-muted);
+    }
+    .acc-body.open { max-height: 180px; padding: 0 26px 18px; }
+
+    /* ─── PRODUCT ROWS — with description + highlights ─ */
+    .products-section { background: var(--green-section); padding: 60px 0 70px; }
+
+    /* Each product block: pill label + 2-col content below */
+    .product-block {
+      max-width: 1300px; margin: 0 auto 70px;
+      padding: 0 80px;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .product-block.visible { opacity: 1; transform: translateY(0); }
+    .product-block:last-child { margin-bottom: 0; }
+
+    /* top row: pill label on left, highlights header on right */
+    .product-block-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: end; gap: 60px; margin-bottom: 18px;
+    }
+
+    /* pill + square */
+    .product-label-wrap {
+      position: relative; display: flex;
+      align-items: flex-start; min-height: 120px;
+    }
+    .product-square {
+      position: absolute; bottom: 0; left: 0;
+      width: 82px; height: 92px;
+      background: var(--green-dark); border-radius: 16px; z-index: 1;
+    }
+    .product-pill {
+      position: relative; z-index: 2;
+      background: var(--cream);
+      border-radius: 999px 22px 22px 999px;
+      padding: 20px 40px 20px 48px;
+      margin-left: 46px; margin-top: 8px;
+      display: flex; align-items: center; min-height: 72px;
+      box-shadow: 0 4px 20px rgba(44,74,53,.10);
+    }
+    .product-pill h2 {
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: clamp(14px, 1.6vw, 19px); color: var(--text-dark);
+    }
+
+    /* highlights header aligned right */
+    .highlights-header {
+      font-size: 14px; font-weight: 700;
+      color: var(--text-dark); letter-spacing: .03em;
+      padding-bottom: 4px;
+    }
+
+    /* bottom row: description left, bullet list right */
+    .product-block-body {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .product-desc p { font-size: 14.5px; line-height: 1.85; color: var(--text-dark); }
+
+    .highlights-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .highlights-list li {
+      font-size: 14px; color: var(--text-dark); line-height: 1.6;
+      padding-left: 18px; position: relative;
+    }
+    .highlights-list li::before {
+      content: '•'; position: absolute; left: 0;
+      color: var(--green-dark); font-size: 16px; line-height: 1.4;
+    }
+
+    /* ─── SPECIAL: Boundary Lubrication Additives ─── */
+    /* This block has a different layout — text left, highlights right, same row */
+    .product-block-boundary .product-block-top {
+      margin-bottom: 0;
+    }
+    .product-block-boundary .product-block-body {
+      margin-top: 20px;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────── */
+    footer { background: var(--green-footer); padding: 54px 60px 0; }
+    .footer-top {
+      display: grid; grid-template-columns: 220px 180px 240px 1fr;
+      gap: 40px; max-width: 1200px; margin: 0 auto; padding-bottom: 44px;
+    }
+    .footer-brand { display: flex; flex-direction: column; }
+    .footer-brand svg { width: 60px; height: 60px; }
+    .footer-brand-name { font-weight: 800; font-size: 20px; color: var(--green-dark); letter-spacing: .06em; }
+    .footer-brand-sub  { font-size: 8px; color: var(--text-muted); letter-spacing: .12em; text-transform: uppercase; }
+    .footer-col h4 { font-weight: 600; font-size: 15px; color: var(--text-dark); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul a { text-decoration: none; font-size: 14px; color: var(--text-muted); transition: color .2s; }
+    .footer-col ul a:hover { color: var(--green-dark); }
+    .footer-col p { font-size: 14px; line-height: 1.75; color: var(--text-muted); }
+    .footer-bottom {
+      border-top: 1px solid rgba(44,74,53,.2); padding: 18px 0;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 12.5px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-links a {
+      font-size: 12.5px; font-weight: 600; letter-spacing: .06em;
+      color: var(--text-mid); text-decoration: none; text-transform: uppercase; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--green-dark); }
+
+    @media (max-width: 1000px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .mega-menu { display: none; }
+      .logo-band { padding: 14px 24px; }
+      .intro-section { grid-template-columns: 1fr; padding: 50px 24px; gap: 36px; }
+      .product-block { padding: 0 24px; margin-bottom: 56px; }
+      .product-block-top, .product-block-body { grid-template-columns: 1fr; gap: 20px; }
+      footer { padding: 40px 24px 0; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="Shiroki Logo/1-removebg-preview.png" alt="Shiroki" style="height:130px;width:auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle active">Solutions</a>
+      <div class="dropdown-menu">
+        <div class="dropdown-col">
+          <div class="dropdown-col-title">Metal Working Fluids</div>
+          <a href="coolants.html">Coolants</a>
+          <a href="cutting-oils.html">Cutting Oils</a>
+          <a href="forming-lubricants.html">Forming Lubricants</a>
+        </div>
+        <div class="dropdown-col">
+          <div class="dropdown-col-title">Industrial Lubricants</div>
+          <a href="ind-lubricants.html#hydraulic" class="active">Hydraulic Fluids</a>
+          <a href="ind-lubricants.html#gear">Gear Oils</a>
+          <a href="ind-lubricants.html#slideway">Sideway &amp; Chain Oils</a>
+          <a href="ind-lubricants.html#thermic">Thermic Oils</a>
+        </div>
+        <div class="dropdown-col">
+          <div class="dropdown-col-title">Surface Treatments</div>
+          <a href="cleaners.html">Cleaners</a>
+          <a href="surface-protectors.html">Surface Protectors</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</nav>
+
+
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section class="hero">
+  <!-- Warm amber oil droplets — SVG circles like in screenshot -->
+  <svg class="droplets" viewBox="0 0 1400 440" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="drop1" cx="38%" cy="35%" r="65%">
+        <stop offset="0%"   stop-color="#f5e8c0" stop-opacity=".95"/>
+        <stop offset="55%"  stop-color="#e8cc80" stop-opacity=".7"/>
+        <stop offset="100%" stop-color="#f8f0d8" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="drop2" cx="40%" cy="38%" r="65%">
+        <stop offset="0%"   stop-color="#f8f0d4" stop-opacity=".9"/>
+        <stop offset="60%"  stop-color="#e8d898" stop-opacity=".5"/>
+        <stop offset="100%" stop-color="#fdf8ec" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="drop3" cx="42%" cy="40%" r="65%">
+        <stop offset="0%"   stop-color="#f0e4b0" stop-opacity=".85"/>
+        <stop offset="100%" stop-color="#fdf8ec" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <!-- large central blob -->
+    <ellipse cx="860" cy="200" rx="320" ry="240" fill="url(#drop1)"/>
+    <!-- medium upper right -->
+    <ellipse cx="1080" cy="130" rx="160" ry="130" fill="url(#drop2)"/>
+    <!-- small lower right -->
+    <ellipse cx="1240" cy="300" rx="110" ry="90" fill="url(#drop3)" opacity=".7"/>
+    <!-- small upper left of center -->
+    <ellipse cx="680" cy="160" rx="90" ry="75" fill="url(#drop2)" opacity=".6"/>
+    <!-- tiny accent -->
+    <ellipse cx="580" cy="310" rx="55" ry="48" fill="url(#drop3)" opacity=".5"/>
+    <!-- highlight sheen on large blob -->
+    <ellipse cx="800" cy="145" rx="120" ry="70" fill="white" opacity=".18"/>
+  </svg>
+
+  <!-- Hex cluster left -->
+  <svg class="hex-cluster-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 8 L80 25 L80 60 L50 77 L20 60 L20 25Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M100 8 L130 25 L130 60 L100 77 L70 60 L70 25Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M25 58 L55 75 L55 110 L25 127 L-5 110 L-5 75Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M75 58 L105 75 L105 110 L75 127 L45 110 L45 75Z" fill="#ccd4c4" opacity=".5" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M125 58 L155 75 L155 110 L125 127 L95 110 L95 75Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M50 108 L80 125 L80 160 L50 177 L20 160 L20 125Z" fill="#ccd4c4" opacity=".35" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M100 108 L130 125 L130 160 L100 177 L70 160 L70 125Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+  </svg>
+
+  <!-- Hex cluster right -->
+  <svg class="hex-cluster-right" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M44 6 L74 23 L74 58 L44 75 L14 58 L14 23Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M94 6 L124 23 L124 58 L94 75 L64 58 L64 23Z" fill="#ccd4c4" opacity=".4" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M19 56 L49 73 L49 108 L19 125 L-11 108 L-11 73Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M69 56 L99 73 L99 108 L69 125 L39 108 L39 73Z" fill="none" stroke="#c0c8b8" stroke-width="1.4"/>
+    <path d="M119 56 L149 73 L149 108 L119 125 L89 108 L89 73Z" fill="#ccd4c4" opacity=".3" stroke="#c0c8b8" stroke-width="1.4"/>
+  </svg>
+
+  <div class="hero-content">
+    <h1>Industrial Lubricants</h1>
+    <a href="#products" class="btn-catalog">Catalog</a>
+  </div>
+</section>
+
+<!-- ─── INTRO + ACCORDION ─────────────────────────────── -->
+<section style="background:var(--white);">
+  <div class="intro-section">
+    <div class="intro-text">
+      <p>SHIROKI industrial lubricants are engineered to deliver superior performance while fully complying with ISO and DIN international standards.</p>
+      <p>Backed by decades of expertise in the design, development, and manufacturing of advanced technical lubricants for the metal industry, SHIROKI solutions are built for reliability, efficiency, and durability.</p>
+      <p>Our range includes high-performance release agents and specialized auxiliary products developed using the latest advancements in lubricant technology. These formulations enhance the efficiency and operational stability of hydraulic systems and industrial equipment, reducing downtime and lowering overall maintenance costs.</p>
+      <p>Designed for long service life, SHIROKI lubricants support responsible waste management practices and enable compliance with the most stringent environmental regulations ensuring sustainable and cost-effective industrial performance.</p>
+    </div>
+
+    <div class="accordion-wrap">
+      <div class="acc-item">
+        <div class="acc-header open" onclick="toggleAcc(this)">
+          Hydraulic Fluids
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body open">Highly refined oils and water based solutions formulated to optimize power transmission in automotive, metallurgical, aerospace, agricultural and industrial machinery.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          Gear Oils
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body">High-performance additives to reduce friction and dissipate heat, preventing system wear, corrosion and scratches even at extreme conditions.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          Slideway Oils
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body">Highly refined oils with friction modifiers and extreme pressure additives to prevent stick-slip, ensure perfect lubrication and protect against rust.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          Chain Oils
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body">High-quality synthetic oils and anticorrosion anti-wear additives for high performance under severe temperature, pressure and speed conditions.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          Thermic Oils
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body">Fast and excellent heat transference with high antirust protection across a wide range of temperatures, guaranteeing long oil life cycles.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          Other Oils
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body">Wide range of technical spindle oils, air compressor oils, and oils and greases for general lubrication across different applications and sectors.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          Boundary Lubrication Additives
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="acc-body">Colloidal dispersions of solid lubricants formulated for high stability, optimizing lubricant performance and reducing premature wear through boundary lubrication.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCT BLOCKS (sage green bg) ───────────────── -->
+<section class="products-section" id="products">
+
+  <!-- Hydraulic Fluids -->
+  <div class="product-block" id="hydraulic">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>Hydraulic Fluids</h2></div>
+      </div>
+      <div class="highlights-header">Highlights:</div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>The HYDROFLOW product family is comprised of highly refined oils and water based solutions, formulated to optimize the power transmission required in different applications and sectors: automotive, metallurgical, aerospace, agricultural and industrial machinery, among others. Moving parts are permanently lubricated to ensure the hydraulic system's perfect performance under any work rhythm.</p>
+      </div>
+      <ul class="highlights-list">
+        <li>Very low foam formation.</li>
+        <li>High viscosity indexes.</li>
+        <li>Help seal any type of gasket.</li>
+        <li>Anti-wear properties with resistance to shear and fire.</li>
+        <li>Prevent microorganism and sludge proliferation inside the circuits.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HVAC (Gear Oils) -->
+  <div class="product-block" id="gear">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>HVAC</h2></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>GEARFLOW products contain high-performance additives intended to reduce friction and dissipate heat in order to prevent premature system wear, corrosion and the appearance of scratches and chips, among other problems. Our formulations allow working in extreme conditions ensuring the necessary thermostability at all times, even with fast rotation speed and high loads.</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slideway Oils -->
+  <div class="product-block" id="slideway">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>Slideway Oils</h2></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>The SLIDEFLOW product family is comprised of products formulated with highly refined oils, friction modifiers, and brand-new extreme pressure additives. The demulsifier power facilitates coolant separation, preventing microorganism growth. SLIDEFLOW products ensure perfect lubrication, preventing the stick-slip effect and protecting against rust. Its excellent adherence provides a high water-proof resistance as well as optimal stability when used on vertical slideways.</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Chain Oils -->
+  <div class="product-block">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>Chain Oils</h2></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>The CHAINFLOW product family is comprised of high-quality synthetic oils and anticorrosion and anti-wear additives. They are specially designed to offer high performance under severe temperature, pressure and speed conditions thanks to its stickiness and high flash point.</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Thermic Oils -->
+  <div class="product-block" id="thermic">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>Thermic Oils</h2></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>The THERMICFLOW product family ensures fast and excellent heat transference and high antirust protection to the machinery in a wide range of temperatures. It also guarantees the oils' long-life cycle, requiring less replacement and reducing maintenance costs.</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Other Oils -->
+  <div class="product-block">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>Other Oils</h2></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>We provide a wide range of technical spindle oils, air compressor oils, as well as oils and greases for general lubrication, suitable for different applications and sectors.</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Boundary Lubrication Additives -->
+  <div class="product-block product-block-boundary">
+    <div class="product-block-top">
+      <div class="product-label-wrap">
+        <div class="product-square"></div>
+        <div class="product-pill"><h2>Boundary Lubrication Additives</h2></div>
+      </div>
+      <div class="highlights-header">Highlights:</div>
+    </div>
+    <div class="product-block-body">
+      <div class="product-desc">
+        <p>The MPD additive product family is comprised of colloidal dispersions of solid lubricants formulated to achieve a high stability of its dispersed particles. Additionally, MPD additives optimize the products' performance where they are incorporated and reduce premature wear by avoiding friction between metallic parts through boundary lubrication technology.</p>
+      </div>
+      <ul class="highlights-list">
+        <li>Suitable for multiple types of lubricant and any type of process and severity.</li>
+        <li>Adaptable to each client's needs.</li>
+        <li>High product stability during storage.</li>
+        <li>High lubrication and care for metallic parts.</li>
+        <li>Meets different environmental and occupational safety standards.</li>
+        <li>Free of all toxic compounds, aromatics, chlorides, PBC, and ashes.</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="Shiroki Logo/1-removebg-preview.png" alt="Shiroki" style="height:130px;width:auto;">
+    </div>
+    <div class="footer-col">
+      <h4>Quick links</h4>
+      <ul>
+        <li><a href="#">News &amp; Events</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact us</h4>
+      <ul>
+        <li><a href="tel:+912267487800">+91-22 67487800</a></li>
+        <li><a href="mailto:sales@shiroki-group.com">sales@shiroki-group.com</a></li>
+        <li><a href="https://www.shiroki-group.com" target="_blank">www.shiroki-group.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Address</h4>
+      <p>Corporate Office: Floor No. 5, 6 &amp; 7, Henry Plaza, Near Orchid Hotel, Opp. T 24 Hotel, Vile Parle East, Mumbai 400099.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Lubrikote Specialities Pvt. Ltd. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="#">Web Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Cookies Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    const isOpen = header.classList.contains('open');
+    document.querySelectorAll('.acc-header').forEach(h => {
+      h.classList.remove('open');
+      h.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
+  }
+
+  const blocks = document.querySelectorAll('.product-block');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: .15 });
+  blocks.forEach(block => obs.observe(block));
+</script>
+</body>
+</html>
