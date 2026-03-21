@@ -42,46 +42,55 @@
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
     .nav-logo-text span:first-child { font-weight: 700; font-size: 17px; color: var(--green-dark); letter-spacing: .06em; }
     .nav-logo-text span:last-child  { font-size: 8px; color: var(--text-muted); letter-spacing: .12em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 16px; list-style: none; }
+    .nav-links { display: flex; margin-right:40px; align-items: center; gap: 38px; list-style: none; }
     .nav-links a {
-      text-decoration: none; font-size: 12px; font-weight: 500;
-      color: var(--text-mid); letter-spacing: .07em; text-transform: uppercase;
-      padding: 8px 20px; border-radius: 4px; transition: color .2s;
+      text-decoration: none; font-size: 15px; font-weight: 600;
+      color: var(--text-mid); letter-spacing: .10em; text-transform: uppercase;
+      padding: 6px 2px; position: relative; transition: color .25s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--green-dark);
+      border-radius: 999px; transition: width .3s ease;
     }
     .nav-links a:hover { color: var(--green-dark); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-links a.active { color: var(--green-dark); font-weight: 700; }
+    .nav-links a.active::after { width: 100%; }
 
     /* ─── SOLUTIONS DROPDOWN ─────────────────────── */
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { cursor: default; }
     .dropdown-menu {
       display: none;
-      position: absolute; top: calc(100% + 6px); left: 50%;
-      transform: translateX(-50%);
+      position: fixed;
+      top: 120px; left: 0;
+      width: 100vw;
+      height: auto;
       background: var(--white);
-      border: 1px solid var(--green-light);
-      border-radius: 12px;
-      padding: 22px 26px;
-      gap: 28px;
-      min-width: 520px;
-      box-shadow: 0 8px 32px rgba(44,74,53,.15);
+      border-top: 2px solid var(--green-light);
+      border-bottom: 2px solid var(--green-light);
+      padding: 24px 48px;
+      gap: 24px;
+      box-shadow: 0 16px 48px rgba(44,74,53,.18);
       z-index: 200;
+      align-items: stretch;
+      background: var(--off-white);
     }
-    .nav-dropdown:hover .dropdown-menu { display: flex; }
-    .dropdown-col { display: flex; flex-direction: column; }
+    .dropdown-menu.open { display: flex; }
+    .dropdown-col { display: flex; flex-direction: column; flex: 1; padding: 28px 32px; background: var(--white); border-radius: 18px; }
     .dropdown-col-title {
-      font-size: 10px; font-weight: 700; letter-spacing: .10em;
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
       text-transform: uppercase; color: var(--green-dark);
-      margin-bottom: 10px; padding-bottom: 6px;
-      border-bottom: 1px solid var(--green-light);
-      white-space: nowrap;
+      margin-bottom: 16px; opacity: .7;
     }
     .dropdown-col a {
-      font-size: 13px; color: var(--text-muted); text-decoration: none;
-      padding: 4px 0; transition: color .2s;
-      text-transform: none; font-weight: 400; letter-spacing: 0;
+      font-size: 17px; color: var(--text-dark); text-decoration: none;
+      padding: 9px 14px; transition: background .2s, color .2s;
+      text-transform: none; font-weight: 500; letter-spacing: 0;
+      border-radius: 10px; margin-bottom: 2px;
     }
-    .dropdown-col a:hover { color: var(--green-dark); }
+    .dropdown-col a:hover { background: var(--green-light); color: var(--green-dark); }
     .dropdown-col a.active { color: var(--green-dark); font-weight: 600; }
 
     /* ─── PAGE HEADER ──────────────────────────────── */
@@ -99,10 +108,7 @@
       background: var(--off-white);
     }
     .hero-banner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='69' viewBox='0 0 60 69'%3E%3Cpath d='M30 0 L60 17 L60 52 L30 69 L0 52 L0 17 Z' fill='none' stroke='%23b0c4a8' stroke-width='1'/%3E%3C/svg%3E");
-      background-size: 60px 69px;
+      content: none;
       opacity: .3;
     }
     .hero-banner h1 {
@@ -148,20 +154,9 @@
     .showcase-quote strong { color: var(--green-dark); }
 
     .showcase-products {
-      background: var(--cream); border-radius: 20px; padding: 40px;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-      align-items: end;
+      border-radius: 20px; overflow: hidden; display: flex; align-items: center;
     }
-    .prod-item {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      text-align: center;
-    }
-    .prod-item .container {
-      width: 100%; aspect-ratio: 1; border-radius: 14px;
-      background: var(--green-light); display: flex; align-items: center; justify-content: center;
-    }
-    .prod-item .container svg { width: 60%; height: 60%; }
-    .prod-item span { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+    .showcase-products img { width: 100%; height: auto; display: block; border-radius: 20px; }
 
     /* ─── FOOTER ───────────────────────────────────── */
     footer { background: var(--green-footer); padding: 54px 60px 0; }
@@ -242,67 +237,25 @@
   </ul>
 </nav>
 
-<!-- ─── PAGE HEADER ─────────────────────────────────── -->
-<div class="page-header"></div>
-
 <!-- ─── HERO BANNER ─────────────────────────────────── -->
 <section class="hero-banner">
   <h1>About Us</h1>
   <div class="body-text">
-    <p>SHIROKI is a premier chemical manufacturing company with decades of experience in designing, developing, and manufacturing advanced industrial lubricants, metalworking fluids, and surface treatment solutions.</p>
-    <p>Our products are engineered to meet the most demanding performance requirements across a wide range of industrial sectors — from automotive and aerospace to heavy machinery and precision manufacturing.</p>
-    <p>Backed by a team of expert chemists and a state-of-the-art R&amp;D facility, SHIROKI is committed to innovation, sustainability, and delivering exceptional value to our partners worldwide.</p>
+    <p>We are a specialized chemical solutions company dedicated to supporting modern manufacturing and industrial processes. Our expertise lies in post-treatment chemicals, cutting fluids, and impregnation chemicals, developed to enhance performance and efficiency across a wide range of applications.</p>
+    <p>With a strong focus on quality, consistency and innovation, we develop products that meet the demanding requirements of today's production environments. Our formulations are engineered to improve surface protection, machining efficiency, corrosion resistance and component reliability, while maintaining compliance with industry standards and environmental considerations.</p>
+    <p>We work closely with our customers to understand their specific challenges and operating conditions. This collaborative approach allows us to deliver tailored solutions, technical support and dependable supply, helping clients optimize processes, reduce downtime and extend product life. Driven by technical expertise and a commitment to continuous improvement, we aim to be a trusted partner for industries seeking reliable and high-performance chemical solutions.</p>
   </div>
 </section>
 
 <!-- ─── PRODUCT SHOWCASE ─────────────────────────────── -->
 <section class="showcase reveal">
   <div class="showcase-quote">
-    <p><strong>SHIROKI</strong> offers a comprehensive portfolio of high-performance chemical solutions — from metalworking fluids and industrial lubricants to advanced surface treatments and cleaners.</p>
-    <p>Every product is formulated with precision and backed by rigorous quality control, ensuring reliable performance that our customers can depend on in even the most challenging industrial environments.</p>
-    <p>Our range includes coolants, cutting oils, forming lubricants, hydraulic fluids, gear oils, chain oils, thermic oils, part protectors, cleaners, and auxiliary products — a complete solution for modern manufacturing.</p>
+    <p>At <strong>SHIROKI</strong>, performance is engineered with purpose. Built on decades of technical expertise in metalworking fluids and industrial lubricants, our solutions are designed to power precision, protect every surface, and optimize every process.</p>
+    <p>From cutting and forming to cleaning and protection, SHIROKI stands for reliability, innovation, and uncompromising quality. We don't just manufacture lubricants — we engineer efficiency, extend equipment life, and support sustainable industrial progress.</p>
+    <p>When performance matters, industries trust SHIROKI.</p>
   </div>
   <div class="showcase-products">
-    <div class="prod-item">
-      <div class="container">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="4" width="44" height="52" rx="6" fill="#2c4a35" opacity=".7"/>
-          <rect x="14" y="22" width="32" height="8" rx="2" fill="#fff" opacity=".4"/>
-          <text x="30" y="17" font-size="7" fill="#fff" text-anchor="middle" font-weight="600">SHIROKI</text>
-        </svg>
-      </div>
-      <span>IBC Tote</span>
-    </div>
-    <div class="prod-item">
-      <div class="container">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="12" y="6" width="36" height="48" rx="8" fill="#2c4a35" opacity=".8"/>
-          <rect x="18" y="20" width="24" height="6" rx="1.5" fill="#fff" opacity=".4"/>
-          <text x="30" y="16" font-size="6" fill="#fff" text-anchor="middle" font-weight="600">SHIROKI</text>
-        </svg>
-      </div>
-      <span>Drum</span>
-    </div>
-    <div class="prod-item">
-      <div class="container">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="14" y="10" width="32" height="40" rx="6" fill="#7a9b6d" opacity=".8"/>
-          <rect x="20" y="22" width="20" height="5" rx="1" fill="#fff" opacity=".4"/>
-          <text x="30" y="19" font-size="5.5" fill="#fff" text-anchor="middle" font-weight="600">SHIROKI</text>
-        </svg>
-      </div>
-      <span>Bucket</span>
-    </div>
-    <div class="prod-item">
-      <div class="container">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="18" y="14" width="24" height="32" rx="4" fill="#b8a070" opacity=".7"/>
-          <rect x="22" y="24" width="16" height="4" rx="1" fill="#fff" opacity=".4"/>
-          <text x="30" y="22" font-size="5" fill="#fff" text-anchor="middle" font-weight="600">SHIROKI</text>
-        </svg>
-      </div>
-      <span>Bag</span>
-    </div>
+    <img src="Images/Images/ChatGPT Image Mar 5, 2026, 10_03_52 AM (1).png" alt="SHIROKI product range — IBC tote, drums, buckets and bags">
   </div>
 </section>
 
@@ -310,7 +263,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="Shiroki Logo/1-removebg-preview.png" alt="Shiroki" style="height:130px;width:auto;">
+      <img src="Shiroki Logo/1-removebg-preview.png" alt="Shiroki" style="width:130px;height:auto;">
     </div>
     <div class="footer-col">
       <h4>Quick links</h4>
@@ -344,6 +297,19 @@
 </footer>
 
 <script>
+(function(){
+  var trigger = document.querySelector('.nav-dropdown');
+  var menu    = document.querySelector('.dropdown-menu');
+  if (!trigger || !menu) return;
+  var t;
+  function open()  { clearTimeout(t); menu.classList.add('open'); }
+  function close() { t = setTimeout(function(){ menu.classList.remove('open'); }, 80); }
+  trigger.addEventListener('mouseenter', open);
+  trigger.addEventListener('mouseleave', close);
+  menu.addEventListener('mouseenter', open);
+  menu.addEventListener('mouseleave', close);
+})();
+
 const revealEls = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
