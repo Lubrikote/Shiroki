@@ -206,25 +206,14 @@
     }
     .acc-item { border-bottom: 1px solid rgba(44,74,53,.12); }
     .acc-item:last-child { border-bottom: none; }
-    .acc-header {
+    .acc-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 26px; cursor: pointer;
+      padding: 18px 26px; text-decoration: none;
       font-size: 14.5px; font-weight: 500;
-      color: var(--text-dark); transition: background .2s; user-select: none;
+      color: var(--text-dark); transition: background .2s, color .2s;
     }
-    .acc-header:hover { background: rgba(44,74,53,.07); }
-    .acc-header.open  { font-weight: 600; color: var(--green-dark); }
-    .acc-chevron {
-      width: 18px; height: 18px; transition: transform .3s ease;
-      flex-shrink: 0; color: var(--green-dark);
-    }
-    .acc-header.open .acc-chevron { transform: rotate(180deg); }
-    .acc-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .3s ease;
-      padding: 0 26px; font-size: 13.5px; line-height: 1.75; color: var(--text-muted);
-    }
-    .acc-body.open { max-height: 180px; padding: 0 26px 18px; }
+    .acc-link:hover { background: rgba(44,74,53,.07); color: var(--green-dark); }
+    .acc-arrow { width: 18px; height: 18px; flex-shrink: 0; color: var(--green-dark); }
 
     /* ─── PRODUCT ROWS ────────────────────────────── */
     .products-section { background: var(--green-section); padding: 60px 0 60px; }
@@ -235,6 +224,7 @@
       align-items: center; gap: 60px; padding: 0 80px;
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s ease, transform .65s ease;
+      scroll-margin-top: 140px;
     }
     .product-row.visible { opacity: 1; transform: translateY(0); }
     .product-row:last-child { margin-bottom: 0; }
@@ -419,70 +409,49 @@
       </ul>
     </div>
 
-    <!-- Right: accordion -->
+    <!-- Right: nav links -->
     <div class="accordion-wrap">
       <div class="acc-item">
-        <div class="acc-header open" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#deep-drawing">
           Deep drawing and stamping
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body open">
-          Formulated with a mineral oil base, suitable for any type of severity, with a low environmental impact and a balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#extrusion">
           Extrusion and rolling
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Formulated with a mineral oil base, suitable for any type of severity, with a low environmental impact and a balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#hvac">
           HVAC
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Formulated with a mineral oil base, suitable for any type of severity, with a low environmental impact and a balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#punching">
           Punching and blanking
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Formulated with a mineral oil base, suitable for any type of severity, with a low environmental impact and a balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#cold-heading">
           Cold Heading
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Formulated with a mineral oil base, suitable for any type of severity, with a low environmental impact and a balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#roll-forming">
           Roll Forming
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Formulated with a mineral oil base, suitable for any type of severity, with a low environmental impact and a balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#auxiliary">
           Auxiliary
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Technical auxiliary products designed for surface protection and treatment related to forming operations.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -491,7 +460,7 @@
 <!-- ─── PRODUCT ROWS (sage green bg) ─────────────────── -->
 <section class="products-section" id="products">
 
-  <div class="product-row">
+  <div class="product-row" id="deep-drawing">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Deep drawing and stamping</h2></div>
@@ -501,7 +470,7 @@
     </div>
   </div>
 
-  <div class="product-row">
+  <div class="product-row" id="extrusion">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Extrusion and rolling</h2></div>
@@ -511,7 +480,7 @@
     </div>
   </div>
 
-  <div class="product-row">
+  <div class="product-row" id="hvac">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>HVAC</h2></div>
@@ -521,7 +490,7 @@
     </div>
   </div>
 
-  <div class="product-row">
+  <div class="product-row" id="punching">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Punching and blanking</h2></div>
@@ -531,7 +500,7 @@
     </div>
   </div>
 
-  <div class="product-row">
+  <div class="product-row" id="cold-heading">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Cold Heading</h2></div>
@@ -541,7 +510,7 @@
     </div>
   </div>
 
-  <div class="product-row">
+  <div class="product-row" id="roll-forming">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Roll Forming</h2></div>
@@ -554,7 +523,7 @@
 </section>
 
 <!-- ─── AUXILIARY (white bg) ─────────────────────────── -->
-<section style="background: var(--white); padding: 60px 0 70px;">
+<section id="auxiliary" style="background: var(--white); padding: 60px 0 70px; scroll-margin-top: 140px;">
   <div class="auxiliary-section">
 
     <div class="aux-wrap">
@@ -620,16 +589,6 @@
   menu.addEventListener('mouseenter', open);
   menu.addEventListener('mouseleave', close);
 })();
-
-  function toggleAcc(header) {
-    const body = header.nextElementSibling;
-    const isOpen = header.classList.contains('open');
-    document.querySelectorAll('.acc-header').forEach(h => {
-      h.classList.remove('open');
-      h.nextElementSibling.classList.remove('open');
-    });
-    if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
-  }
 
   const rows = document.querySelectorAll('.product-row');
   const obs = new IntersectionObserver((entries) => {

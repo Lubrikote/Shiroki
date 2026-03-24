@@ -192,29 +192,14 @@
     .acc-item { border-bottom: 1px solid rgba(44,74,53,.12); }
     .acc-item:last-child { border-bottom: none; }
 
-    .acc-header {
+    .acc-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 28px;
-      cursor: pointer; font-size: 15.5px; font-weight: 500;
-      color: var(--text-dark); transition: background .2s; user-select: none;
+      padding: 20px 28px; text-decoration: none;
+      font-size: 15.5px; font-weight: 500;
+      color: var(--text-dark); transition: background .2s, color .2s;
     }
-    .acc-header:hover { background: rgba(44,74,53,.07); }
-    .acc-header.open  { font-weight: 600; color: var(--green-dark); }
-
-    .acc-chevron {
-      width: 18px; height: 18px;
-      transition: transform .3s ease;
-      flex-shrink: 0; color: var(--green-dark);
-    }
-    .acc-header.open .acc-chevron { transform: rotate(180deg); }
-
-    .acc-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .3s ease;
-      padding: 0 28px;
-      font-size: 14px; line-height: 1.75; color: var(--text-muted);
-    }
-    .acc-body.open { max-height: 200px; padding: 0 28px 20px; }
+    .acc-link:hover { background: rgba(44,74,53,.07); color: var(--green-dark); }
+    .acc-arrow { width: 18px; height: 18px; flex-shrink: 0; color: var(--green-dark); }
 
     /* ─── PRODUCT ROWS — sage green bg ───────────── */
     .products-section {
@@ -232,6 +217,7 @@
       padding: 0 80px;
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s ease, transform .65s ease;
+      scroll-margin-top: 140px;
     }
     .product-row.visible { opacity: 1; transform: translateY(0); }
     .product-row:last-child { margin-bottom: 0; }
@@ -461,40 +447,28 @@
 
     <div class="accordion-wrap">
       <div class="acc-item">
-        <div class="acc-header open" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#mineral-oils">
           Mineral Oils
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body open">
-          Mineral oil base, suitable for any type of severity with low environmental impact and balanced composition.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#mineral-free">
           Mineral-free
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Biodegradable vegetal or synthetic oils — an environmentally friendly range based on non-polluting additives.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#high-performance">
           High Performance
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Mineral oil base with high performance additives to lubricate at moderate temperatures, enabling lower energy consumption.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#auxiliary">
           Auxiliary
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">
-          Supplementary products designed for use in machinery to facilitate maintenance and cleaning operations.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -504,7 +478,7 @@
 <section class="products-section" id="products">
 
   <!-- Mineral Oils -->
-  <div class="product-row">
+  <div class="product-row" id="mineral-oils">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Mineral Oils</h2></div>
@@ -515,7 +489,7 @@
   </div>
 
   <!-- Mineral-free -->
-  <div class="product-row">
+  <div class="product-row" id="mineral-free">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>Mineral-free</h2></div>
@@ -526,7 +500,7 @@
   </div>
 
   <!-- High Performance -->
-  <div class="product-row">
+  <div class="product-row" id="high-performance">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill"><h2>High Performance</h2></div>
@@ -539,7 +513,7 @@
 </section>
 
 <!-- ─── AUXILIARY — white background ─────────────────── -->
-<section style="background: var(--white); padding: 60px 0 70px;">
+<section id="auxiliary" style="background: var(--white); padding: 60px 0 70px; scroll-margin-top: 140px;">
   <div class="auxiliary-section">
 
     <div class="aux-wrap">
@@ -605,16 +579,6 @@
   menu.addEventListener('mouseenter', open);
   menu.addEventListener('mouseleave', close);
 })();
-
-  function toggleAcc(header) {
-    const body = header.nextElementSibling;
-    const isOpen = header.classList.contains('open');
-    document.querySelectorAll('.acc-header').forEach(h => {
-      h.classList.remove('open');
-      h.nextElementSibling.classList.remove('open');
-    });
-    if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
-  }
 
   const rows = document.querySelectorAll('.product-row');
   const obs = new IntersectionObserver((entries) => {

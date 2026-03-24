@@ -199,42 +199,19 @@
     }
     .acc-item:last-child { border-bottom: none; }
 
-    .acc-header {
+    .acc-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 28px;
-      cursor: pointer;
+      text-decoration: none;
       font-size: 15.5px;
       font-weight: 500;
       color: var(--text-dark);
-      transition: background .2s;
-      user-select: none;
+      transition: background .2s, color .2s;
     }
-    .acc-header:hover { background: rgba(44,74,53,.07); }
-    .acc-header.open { font-weight: 600; color: var(--green-dark); }
-
-    .acc-chevron {
-      width: 18px; height: 18px;
-      transition: transform .3s ease;
-      flex-shrink: 0;
-      color: var(--green-dark);
-    }
-    .acc-header.open .acc-chevron { transform: rotate(180deg); }
-
-    .acc-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease, padding .3s ease;
-      padding: 0 28px;
-      font-size: 14px;
-      line-height: 1.75;
-      color: var(--text-muted);
-    }
-    .acc-body.open {
-      max-height: 200px;
-      padding: 0 28px 20px;
-    }
+    .acc-link:hover { background: rgba(44,74,53,.07); color: var(--green-dark); }
+    .acc-arrow { width: 18px; height: 18px; flex-shrink: 0; color: var(--green-dark); }
 
     /* ─── PRODUCT DETAIL CARDS ─────────────────────── */
     .products-section {
@@ -253,6 +230,7 @@
       opacity: 0;
       transform: translateY(28px);
       transition: opacity .65s ease, transform .65s ease;
+      scroll-margin-top: 140px;
     }
     .product-row.visible { opacity: 1; transform: translateY(0); }
     .product-row:last-child { margin-bottom: 0; }
@@ -411,62 +389,31 @@
       <p>The SHIROKI METrange includes advanced water-miscible cutting fluids tailored for diverse machining applications. These formulations effectively regulate temperature at the point of friction, minimize tool wear, enhance chip evacuation, and deliver superior surface finish — ensuring precision, efficiency, and long-lasting performance in every operation.</p>
     </div>
 
-    <!-- Right: accordion -->
+    <!-- Right: nav links -->
     <div class="accordion-wrap">
       <div class="acc-item">
-        <div class="acc-header open" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#soluble">
           Soluble Lubricants
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </div>
-        <div class="acc-body open">
-          Soluble concentrates with medium/high content of mineral oil or esters for versatile, high-lubrication operations.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#semisynthetic">
           Semisynthetic Lubricants
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </div>
-        <div class="acc-body">
-          Low/medium mineral or ester oil content for balanced lubrication and cooling in general and demanding processes.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#synthetic">
           Synthetic Fluids
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </div>
-        <div class="acc-body">
-          Water soluble compounds for high refrigeration requirements with excellent detergency — ideal for grinding and general machining.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#neosynthetic">
           Neosynthetic Fluids
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </div>
-        <div class="acc-body">
-          Highly lubricating additives for severe operations requiring both lubrication and refrigeration with excellent detergency.
-        </div>
-      </div>
-      <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
-          Auxiliary
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </div>
-        <div class="acc-body">
-          Supplemental fluids and additives that enhance the performance and longevity of primary metalworking fluid formulations.
-        </div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -476,7 +423,7 @@
 <section class="products-section" id="products">
 
   <!-- Soluble Lubricants -->
-  <div class="product-row">
+  <div class="product-row" id="soluble">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill">
@@ -489,7 +436,7 @@
   </div>
 
   <!-- Semisynthetic Lubricants -->
-  <div class="product-row">
+  <div class="product-row" id="semisynthetic">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill">
@@ -502,7 +449,7 @@
   </div>
 
   <!-- Synthetic Fluids -->
-  <div class="product-row">
+  <div class="product-row" id="synthetic">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill">
@@ -515,7 +462,7 @@
   </div>
 
   <!-- Neosynthetic Fluids -->
-  <div class="product-row">
+  <div class="product-row" id="neosynthetic">
     <div class="product-label-wrap">
       <div class="product-square"></div>
       <div class="product-pill">
@@ -579,22 +526,6 @@
   menu.addEventListener('mouseenter', open);
   menu.addEventListener('mouseleave', close);
 })();
-
-  // Accordion toggle
-  function toggleAcc(header) {
-    const body = header.nextElementSibling;
-    const isOpen = header.classList.contains('open');
-    // close all
-    document.querySelectorAll('.acc-header').forEach(h => {
-      h.classList.remove('open');
-      h.nextElementSibling.classList.remove('open');
-    });
-    // open clicked if it was closed
-    if (!isOpen) {
-      header.classList.add('open');
-      body.classList.add('open');
-    }
-  }
 
   // Scroll reveal for product rows
   const rows = document.querySelectorAll('.product-row');

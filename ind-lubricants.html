@@ -176,22 +176,14 @@
     .accordion-wrap { background: var(--green-section); border-radius: 22px; overflow: hidden; align-self: start; }
     .acc-item { border-bottom: 1px solid rgba(44,74,53,.12); }
     .acc-item:last-child { border-bottom: none; }
-    .acc-header {
+    .acc-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 26px; cursor: pointer;
+      padding: 18px 26px; text-decoration: none;
       font-size: 14.5px; font-weight: 500;
-      color: var(--text-dark); transition: background .2s; user-select: none;
+      color: var(--text-dark); transition: background .2s, color .2s;
     }
-    .acc-header:hover { background: rgba(44,74,53,.07); }
-    .acc-header.open  { font-weight: 600; color: var(--green-dark); }
-    .acc-chevron { width: 18px; height: 18px; transition: transform .3s; flex-shrink: 0; color: var(--green-dark); }
-    .acc-header.open .acc-chevron { transform: rotate(180deg); }
-    .acc-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .3s ease;
-      padding: 0 26px; font-size: 13.5px; line-height: 1.75; color: var(--text-muted);
-    }
-    .acc-body.open { max-height: 180px; padding: 0 26px 18px; }
+    .acc-link:hover { background: rgba(44,74,53,.07); color: var(--green-dark); }
+    .acc-arrow { width: 18px; height: 18px; flex-shrink: 0; color: var(--green-dark); }
 
     /* ─── PRODUCT ROWS — with description + highlights ─ */
     .products-section { background: var(--green-section); padding: 60px 0 70px; }
@@ -202,6 +194,7 @@
       padding: 0 80px;
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s ease, transform .65s ease;
+      scroll-margin-top: 140px;
     }
     .product-block.visible { opacity: 1; transform: translateY(0); }
     .product-block:last-child { margin-bottom: 0; }
@@ -402,53 +395,46 @@
 
     <div class="accordion-wrap">
       <div class="acc-item">
-        <div class="acc-header open" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#hydraulic">
           Hydraulic Fluids
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body open">Highly refined oils and water based solutions formulated to optimize power transmission in automotive, metallurgical, aerospace, agricultural and industrial machinery.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#gear">
           Gear Oils
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">High-performance additives to reduce friction and dissipate heat, preventing system wear, corrosion and scratches even at extreme conditions.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#slideway">
           Slideway Oils
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">Highly refined oils with friction modifiers and extreme pressure additives to prevent stick-slip, ensure perfect lubrication and protect against rust.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#chain">
           Chain Oils
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">High-quality synthetic oils and anticorrosion anti-wear additives for high performance under severe temperature, pressure and speed conditions.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#thermic">
           Thermic Oils
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">Fast and excellent heat transference with high antirust protection across a wide range of temperatures, guaranteeing long oil life cycles.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#other-oils">
           Other Oils
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">Wide range of technical spindle oils, air compressor oils, and oils and greases for general lubrication across different applications and sectors.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
       <div class="acc-item">
-        <div class="acc-header" onclick="toggleAcc(this)">
+        <a class="acc-link" href="#boundary">
           Boundary Lubrication Additives
-          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="acc-body">Colloidal dispersions of solid lubricants formulated for high stability, optimizing lubricant performance and reducing premature wear through boundary lubrication.</div>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -515,7 +501,7 @@
   </div>
 
   <!-- Chain Oils -->
-  <div class="product-block">
+  <div class="product-block" id="chain">
     <div class="product-block-top">
       <div class="product-label-wrap">
         <div class="product-square"></div>
@@ -549,7 +535,7 @@
   </div>
 
   <!-- Other Oils -->
-  <div class="product-block">
+  <div class="product-block" id="other-oils">
     <div class="product-block-top">
       <div class="product-label-wrap">
         <div class="product-square"></div>
@@ -566,7 +552,7 @@
   </div>
 
   <!-- Boundary Lubrication Additives -->
-  <div class="product-block product-block-boundary">
+  <div class="product-block product-block-boundary" id="boundary">
     <div class="product-block-top">
       <div class="product-label-wrap">
         <div class="product-square"></div>
@@ -641,16 +627,6 @@
   menu.addEventListener('mouseenter', open);
   menu.addEventListener('mouseleave', close);
 })();
-
-  function toggleAcc(header) {
-    const body = header.nextElementSibling;
-    const isOpen = header.classList.contains('open');
-    document.querySelectorAll('.acc-header').forEach(h => {
-      h.classList.remove('open');
-      h.nextElementSibling.classList.remove('open');
-    });
-    if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
-  }
 
   const blocks = document.querySelectorAll('.product-block');
   const obs = new IntersectionObserver((entries) => {
