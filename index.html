@@ -162,14 +162,21 @@
       gap: 64px;
       max-width: 1200px;
       margin: 0 auto;
-      align-items: start;
+      align-items: stretch;
       position: relative; z-index: 1;
     }
-    .about-photo {
-      width: 100%; border-radius: 20px;
-      object-fit: cover;
-      transform: rotate(-2deg);
+    .about-left {
+      display: flex;
+      overflow: hidden;
+      border-radius: 20px;
       box-shadow: 0 12px 44px rgba(0,0,0,.14);
+    }
+    .about-photo {
+      width: 100%; height: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      transform: rotate(-2deg) scale(1.06);
+      display: block;
     }
     .about-right {
       display: flex; flex-direction: column;
@@ -340,7 +347,7 @@
   <div class="about-inner">
 
     <!-- Left: photo -->
-    <div>
+    <div class="about-left">
       <img
         src="Images/Images/ChatGPT Image Jan 12, 2026, 01_41_18 PM (1).png"
         alt="Shiroki team in laboratory"
