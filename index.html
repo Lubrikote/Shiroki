@@ -271,6 +271,9 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ─── HAMBURGER ──────────────────────────────────── */
+    .nav-hamburger { display: none; }
+
     /* ─── MOBILE ────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
@@ -286,6 +289,55 @@
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; text-align: center; }
       footer { padding: 40px 24px 0; }
+      nav { height: 80px; }
+      .dropdown-menu { top: 80px; }
+      nav img { max-height: 60px !important; }
+      .nav-hamburger {
+        display: flex; flex-direction: column; justify-content: center; gap: 6px;
+        width: 36px; height: 36px; background: none; border: none; cursor: pointer;
+        padding: 8px 4px; z-index: 301; flex-shrink: 0;
+      }
+      .nav-hamburger span {
+        display: block; width: 100%; height: 2px;
+        background: var(--green-dark); border-radius: 999px;
+        transition: transform .3s, opacity .3s;
+      }
+      .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+      .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+      .nav-links.open {
+        display: flex !important; flex-direction: column;
+        position: fixed; top: 0; right: 0; bottom: 0;
+        width: min(300px, 85vw);
+        background: var(--green-nav); padding: 84px 0 48px;
+        gap: 0; z-index: 300;
+        box-shadow: -4px 0 32px rgba(44,74,53,.2); overflow-y: auto;
+        margin-right: 0;
+      }
+      .nav-links.open li { width: 100%; }
+      .nav-links.open > li > a {
+        display: block; padding: 16px 28px; font-size: 15px;
+        border-bottom: 1px solid rgba(44,74,53,.10); letter-spacing: .06em;
+      }
+      .nav-links.open .dropdown-menu {
+        display: none; position: static; width: 100%;
+        box-shadow: none; border: none; padding: 0 0 8px;
+        background: rgba(44,74,53,.06); flex-direction: column;
+      }
+      .nav-links.open .dropdown-menu.open { display: flex; }
+      .nav-links.open .dropdown-col {
+        border-radius: 0; padding: 6px 28px 6px 36px; background: transparent;
+      }
+      .nav-links.open .dropdown-col-title { margin-bottom: 6px; }
+      .nav-links.open .dropdown-col a {
+        padding: 7px 0; border-radius: 0; font-size: 14px; border-bottom: none;
+      }
+      .nav-overlay {
+        display: none; position: fixed; inset: 0;
+        background: rgba(0,0,0,.4); z-index: 299;
+      }
+      .nav-overlay.open { display: block; }
+      .footer-top { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -324,7 +376,11 @@
     </li>
     <li><a href="contact.html">Contact Us</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- ─── HERO ─────────────────────────────────────────── -->
 <section class="hero">
@@ -519,6 +575,24 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: .15 });
 revealEls.forEach(el => obs.observe(el));
+
+(function(){
+  var hamburger = document.getElementById('navHamburger');
+  var navLinks  = document.querySelector('.nav-links');
+  var overlay   = document.getElementById('navOverlay');
+  if (!hamburger) return;
+  var solutionsMenu = document.querySelector('.dropdown-menu');
+  function openMenu()  { hamburger.classList.add('open'); navLinks.classList.add('open'); if(overlay) overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); navLinks.classList.remove('open'); if(overlay) overlay.classList.remove('open'); document.body.style.overflow = ''; if(solutionsMenu) solutionsMenu.classList.remove('open'); }
+  hamburger.addEventListener('click', function(){ navLinks.classList.contains('open') ? closeMenu() : openMenu(); });
+  if(overlay) overlay.addEventListener('click', closeMenu);
+  var solutionsToggle = document.querySelector('.nav-dropdown-toggle');
+  if(solutionsToggle && solutionsMenu) {
+    solutionsToggle.addEventListener('click', function(e){
+      if(navLinks.classList.contains('open')){ e.preventDefault(); solutionsMenu.classList.toggle('open'); }
+    });
+  }
+})();
 </script>
 </body>
 </html>
