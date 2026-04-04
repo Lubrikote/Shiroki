@@ -30,7 +30,7 @@
 
     /* ─── NAV ─────────────────────────────────────── */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 310;
       background: var(--green-nav);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; height: 120px;
@@ -672,12 +672,14 @@
 
 <script>
 (function(){
-  var trigger = document.querySelector('.nav-dropdown');
-  var menu    = document.querySelector('.dropdown-menu');
+  var trigger  = document.querySelector('.nav-dropdown');
+  var menu     = document.querySelector('.dropdown-menu');
+  var navLinks = document.querySelector('.nav-links');
   if (!trigger || !menu) return;
   var t;
-  function open()  { clearTimeout(t); menu.classList.add('open'); }
-  function close() { t = setTimeout(function(){ menu.classList.remove('open'); }, 80); }
+  function isMobileOpen() { return navLinks && navLinks.classList.contains('open'); }
+  function open()  { if (isMobileOpen()) return; clearTimeout(t); menu.classList.add('open'); }
+  function close() { if (isMobileOpen()) return; t = setTimeout(function(){ menu.classList.remove('open'); }, 80); }
   trigger.addEventListener('mouseenter', open);
   trigger.addEventListener('mouseleave', close);
   menu.addEventListener('mouseenter', open);
